@@ -48,19 +48,22 @@ let pathArr = {
 app.get('/index.html', (req, res) => {
     // console.log(url.parse(req.url).pathname)
     let path = url.parse(req.url).pathname;
+    console.log(path);
 
-    let data = fileApi(path.substr(1));
-    if (data) {
-        res.write(200, {'Content-Type': 'text/html'});
-        res.write(data);
-
-        console.log('res success');
-    } else {
-        res.write(404, {'Content-Type': 'text/html'});
-
-        console.log('res fail');
-    }
-    res.end();
+    fileAPI(path.substr(1)).then(data  => {
+        if (data) {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+    
+            console.log('res success');
+        } else {
+            res.writeHead(404, {'Content-Type': 'text/html'});
+    
+            console.log('res fail');
+        }
+        res.end();
+    });
+    
 })
 
 var server = app.listen(9529, 'localhost', () => {
