@@ -1,36 +1,11 @@
-// var http = require('http');
-// var fs = require('fs');
-// var url = require('url');
-
-// http.createServer((request, response) => {
-//   // 解析请求 包括文件名
-//   var pathname = url.parse(request.url).pathname;
-  
-//   console.log('request for ' + pathname + ' received');
-
-//   // 从文件系统中读取请求文件
-//   fs.readFile(pathname.substr(1), (err, data) => {
-//       if (err) {
-//           console.log('err', err);
-
-//           response.writeHead(404, {'Content-Type': 'text/html'});
-//       } else {
-//           response.writeHead(200, {'Content-Type': 'text/html'});
-//           response.write(data.toString());
-//           console.log('request success');
-//       }
-//       response.end();
-//   });
-// }).listen(9527);
-
-// console.log('server is running at port 9527')
-
-// import fileApi from './fileAPI.js';
+/*
 var fileAPI = require('./fileAPI.js')
 
 var express = require('express');
 var fs = require('fs');
 var url = require('url');
+
+var connection = require('./expressDemo/mysqlOption/connectMysql.js');
 
 var app = express();
 app.use('/files', express.static('files'));
@@ -66,6 +41,17 @@ app.get('/index.html', (req, res) => {
     
 })
 
+app.get('/register', (req, res) => {
+    connection.query('select * from users', (err, data) => {
+        console.log(data);
+        if (err) {
+            console.log('error', err);
+            return;
+        }
+        res.send(data);
+    })
+})
+
 var server = app.listen(9529, 'localhost', () => {
 
     let address = server.address();
@@ -74,3 +60,18 @@ var server = app.listen(9529, 'localhost', () => {
 
     console.log('访问地址 http://%s:%s',host, port)
 })
+*/
+
+var express = require('express');
+
+const API = express();
+
+const server = API.listen(9529, 'localhost', () => {
+    
+    let address = server.address();
+    let host = server.address().address;
+    let port = address.port;
+
+    console.log('访问地址 http://%s:%s', host, port);
+});
+
