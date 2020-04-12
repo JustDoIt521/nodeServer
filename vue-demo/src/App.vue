@@ -7,6 +7,21 @@
     <router-view/>
   </div>
 </template>
+<script>
+import {getHomeOne} from './utils/interface.js';
+export default {
+  data () {
+    return {
+
+    }
+  },
+  mounted () {
+    getHomeOne().then(res => {
+      console.warn('data', res);
+    })
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
