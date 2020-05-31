@@ -11,6 +11,7 @@ module.exports = {
     configureWebpack: {  // 使用configureWebpack 配置文件别名路径
         resolve: {
             alias: {
+                '@utils': resolve('src/utils'),
                 '@views': resolve('src/views'),
                 '@components': resolve('src/components'),
             }

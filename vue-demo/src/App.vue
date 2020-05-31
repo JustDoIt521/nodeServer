@@ -6,11 +6,17 @@
   </div>
 </template>
 <script>
+import {getHomeOne} from '@utils/interface.js'
 export default {
   data () {
     return {
 
     }
+  },
+  mounted () {
+    getHomeOne().then(res => {
+      console.warn('homeOne', res);
+    })
   },
   methods: {
     hello () {

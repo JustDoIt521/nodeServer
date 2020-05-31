@@ -8,7 +8,9 @@ const baseAPI = function(path,  type, params = {}){
             // console.warn('path %s || params %s', path, params);
             Axios.post(path, params).then(res => {
                 // console.warn('')
-                resolve(res);
+                let data = res.data || null;
+
+                resolve(data);
             }).catch(err => {
                 reject(err);
             })
