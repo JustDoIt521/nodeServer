@@ -14,6 +14,7 @@ router.get('/two', (req, res) => {
 })
 
 router.post('/three', (req, res) => {
+    // console.log(req);
     res.send('three');
 })
 
