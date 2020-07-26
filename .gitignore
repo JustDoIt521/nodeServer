@@ -1,3 +1,4 @@
 node_modules
-/package-lock.json
-vude-demo/node_modules
+package-lock.json
+
+/baseApp.js
