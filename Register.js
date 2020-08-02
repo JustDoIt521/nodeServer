@@ -1,6 +1,6 @@
 var express = require('express');
 const app = express();
 
-module.exports = app;
+this.App = app;
 
-console.log(112)
+this.Router = this.App.Router();

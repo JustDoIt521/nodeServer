@@ -1,7 +1,9 @@
-const app = require('./baseApp.js')
-const url = require('url')
+var express = require('express');
+const app = express();
+const url = require('url');
 
-const router  = require('./routers/mainPage.js')
+const Router = require('./routers/index.js');
+
 app.all('*', (req, res, next) => {
     console.log('request is from ', url.parse(req.url).pathname);
 
@@ -13,7 +15,7 @@ app.all('*', (req, res, next) => {
     next();
 })
 
-app.use('', router);
+app.use('', Router);
 
 const server = app.listen(8088, () => {
     let host = server.address().address;
