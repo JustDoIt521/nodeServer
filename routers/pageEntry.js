@@ -1,9 +1,5 @@
-const Router = require('.');
 
-function registerRoutes (router) {
-    registeEntryHtml(router);
-}
-
+// 页面路径
 function registeEntryHtml (router) {
     let fs = require('fs');
 
@@ -22,4 +18,6 @@ function registeEntryHtml (router) {
     })
 }
 
-module.exports = registerRoutes;
+module.exports = {
+    registeEntryHtml,
+}
