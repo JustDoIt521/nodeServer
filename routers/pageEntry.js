@@ -1,4 +1,3 @@
-
 // 页面路径
 function registeEntryHtml (router) {
     let fs = require('fs');

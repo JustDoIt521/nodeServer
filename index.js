@@ -1,6 +1,7 @@
 var express = require('express');
 const app = express();
 const url = require('url');
+const bodyParser = require("body-parser");
 
 const Router = require('./routers/index.js');
 
@@ -14,6 +15,10 @@ app.all('*', (req, res, next) => {
 
     next();
 })
+app.use(bodyParser.json());  // body-parser中间件 解析post数据，  请求头需设置为application/json
+app.use(bodyParser.urlencoded({    
+    extended: false
+}));
 
 app.use('', Router);
 
