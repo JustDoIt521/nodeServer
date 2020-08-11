@@ -15,6 +15,19 @@ function registeEntryHtml (router) {
             res.end();
         })
     })
+
+    router.get('/default.js', (req, res) => {
+        fs.readFile('asset/default.js', (err, data) => {
+            if (err) {
+                console.log(err);
+                res.writeHead(404, { 'Content-Type': 'text/html'})
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html'})
+                res.write(data.toString());
+            }
+            res.end();
+        })
+    })
 }
 
 module.exports = {
